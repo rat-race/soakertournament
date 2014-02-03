@@ -20,6 +20,27 @@
 *.user
 *.unityproj
 *.booproj
+
+# ====== #
+# Assets #
+# ====== #
+*.mat
+*.jpg
+*.png
+*.tif
+*.fbx
+*.prefab
+*.obj
+*.meta
+*.unity
+*.blend
+*.3[Dd][Ss]
+*.tga
+*.wav
+*.bmp
+*.avi
+*.shader
+*.psd
  
 # ============ #
 # OS generated #
