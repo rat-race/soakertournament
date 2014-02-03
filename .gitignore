@@ -55,3 +55,6 @@
 *.lnk
 .dropbox
 desktop.ini
+*.rar
+*.zip
+*.7z
