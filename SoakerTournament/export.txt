@@ -1,0 +1,5 @@
+# Map Size
+S 32 32 0
+# Assets
+True
+# Tiles

@@ -1,0 +1,5 @@
+# L <AssetPath>
+L Tiles/Tile1
+L Tiles/fountain_mid
+L Tiles/fountain_corner
+L Tiles/fountain_centre

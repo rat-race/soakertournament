@@ -54,3 +54,8 @@
 [Ee]hthumbs.db
 [Tt]humbs.db
 *.lnk
+.dropbox
+desktop.ini
+*.rar
+*.zip
+*.7z
