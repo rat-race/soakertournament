@@ -31,7 +31,6 @@
 *.fbx
 *.prefab
 *.obj
-*.meta
 *.unity
 *.blend
 *.3[Dd][Ss]
