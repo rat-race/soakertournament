@@ -26,13 +26,13 @@ public class LocalPlayer : Player
 
 		//gameObject.AddComponent("LocalInput") ;// as LocalInput ;
 		//lInput = gameObject.AddComponent<LocalInput>() ;
-		Spawn () ;
+		//Spawn () ;
 	}
 
 
-	public new void Spawn()
-	{
-		//lInput = gameObject.AddComponent("LocalInput") as LocalInput ;
-		pObject.transform.position = new Vector3(5,10,5) ;
-	}
+//	public new void Spawn()
+//	{
+//		//lInput = gameObject.AddComponent("LocalInput") as LocalInput ;
+//		pObject.transform.position = new Vector3(5,10,5) ;
+//	}
 }
