@@ -25,6 +25,7 @@ public class Map : MonoBehaviour
 	public GameObject obj ;
 	public GameObject obj2 ;
 	private GameObject[] objTiles ;	
+	private GameObject fence ;
 	
 	// Asset manager stuff
 
@@ -47,7 +48,7 @@ public class Map : MonoBehaviour
 //		objTiles[1] = (GameObject)Instantiate(Resources.Load("Tiles/Tile1")) ;
 //		objTiles[2] = (GameObject)Instantiate(Resources.Load("Tiles/Tile2")) ;
 		
-		
+		fence = (GameObject)(Resources.Load("Tiles/Fence")) ;
 		
 		//BlankMap() ;
 		LoadMap("Assets\\testmap.txt");
@@ -77,7 +78,7 @@ public class Map : MonoBehaviour
 
 		for(int i = 1; i < mapSizeX + 1; i++)
 		{
-			Instantiate(objTiles[2], (dropPos + new Vector3(i*TileSize, 0, 0)), Quaternion.Euler(Vector3.zero)) ;
+			Instantiate(fence, (dropPos + new Vector3(i*TileSize, 0, 0)), Quaternion.Euler(Vector3.zero)) ;
 		}
 
 		dropPos = new Vector3(-TileSize, 0, mapSizeY * TileSize) ;
@@ -85,7 +86,7 @@ public class Map : MonoBehaviour
 		//Bottom wall
 		for(int i = 1; i < mapSizeX + 1; i++)
 		{
-			Instantiate(objTiles[2], (dropPos + new Vector3(i*TileSize, 0, 0)), Quaternion.Euler(Vector3.zero)) ;
+			Instantiate(fence, (dropPos + new Vector3(i*TileSize, 0, 0)), Quaternion.Euler(Vector3.zero)) ;
 		}
 
 		dropPos = new Vector3(-TileSize, 0, -TileSize) ;
@@ -94,7 +95,7 @@ public class Map : MonoBehaviour
 
 		for(int i = 1; i < mapSizeY + 1; i++)
 		{
-			Instantiate(objTiles[2], (dropPos + new Vector3(0, 0, i*TileSize)), Quaternion.Euler(Vector3.zero)) ;
+			Instantiate(fence, (dropPos + new Vector3(0, 0, i*TileSize)), Quaternion.Euler(Vector3.zero)) ;
 		}
 
 		dropPos = new Vector3(mapSizeX * TileSize, 0, -TileSize) ;
@@ -103,7 +104,7 @@ public class Map : MonoBehaviour
 
 		for(int i = 1; i < mapSizeY + 1; i++)
 		{
-			Instantiate(objTiles[2], (dropPos + new Vector3(0, 0, i*TileSize)), Quaternion.Euler(Vector3.zero)) ;
+			Instantiate(fence, (dropPos + new Vector3(0, 0, i*TileSize)), Quaternion.Euler(Vector3.zero)) ;
 		}
 
 		return 0 ; //SUCCESS!
