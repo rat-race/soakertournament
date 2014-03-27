@@ -8,7 +8,7 @@ public class DebugPlayer : Player
 	new void Start () 
 	{
 		base.Start ();
-		Spawn(new Vector3(50,50,50)) ;
+		//Spawn(new Vector3(50,50,50)) ;
 	}
 	
 	// Update is called once per frame
