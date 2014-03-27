@@ -7,8 +7,8 @@ using System.Text;
 public class Player : MonoBehaviour
 {
 
-	private GameObject pPrefab ;
-	private GameObject pObject ;
+	protected GameObject pPrefab ;
+	protected GameObject pObject ;
 
 //	Currently will just create a Penny
 //	public Player()
@@ -21,9 +21,9 @@ public class Player : MonoBehaviour
 	{
 		pPrefab = (GameObject)(Resources.Load("Prefabs/player/Penny")) ;
 		pObject = (GameObject)(Instantiate (pPrefab, new Vector3(5, 10, 5), Quaternion.Euler(Vector3.zero))) ;
-		Camera.main.transform.parent = pObject.transform ;
-		Camera.main.transform.localPosition = new Vector3(0,20,-100) ;
-		Spawn () ;
+		//Camera.main.transform.parent = pObject.transform ;
+		//Camera.main.transform.localPosition = new Vector3(0,20,-100) ;
+		//Spawn () ;
 	}
 
 	public void Update()
@@ -31,8 +31,16 @@ public class Player : MonoBehaviour
 	}
 
 	//Reset the players health/position
-	public void Spawn()
+//	public void Spawn()
+//	{
+//		pObject.transform.position = new Vector3(10,10,10) ;
+//	}
+
+	public void Spawn(Vector3 spawnpos)
 	{
-		pObject.transform.position = new Vector3(5,10,5) ;
+
+		if(pObject != null)
+			pObject.transform.position = spawnpos ;
 	}
 }
+

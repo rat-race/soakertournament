@@ -1,7 +1,7 @@
 # Comments
 # Initial Setup
 # S <length> <width> <default tile ID>
-S 32 32 0
+S 16 16 0
 # L <AssetPath>
 L Tiles/Tile1
 L Tiles/fountain_mid
