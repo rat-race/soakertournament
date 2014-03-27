@@ -20,7 +20,10 @@ public class Player : MonoBehaviour
 	public void Start()
 	{
 		pPrefab = (GameObject)(Resources.Load("Prefabs/player/Penny")) ;
-		pObject = (GameObject)(Instantiate (pPrefab, new Vector3(5, 10, 5), Quaternion.Euler(Vector3.zero))) ;
+
+		//WARNING: SUPER HACKY CODE
+		if(pObject == null) 
+			pObject = (GameObject)(Instantiate (pPrefab, new Vector3(5, 10, 5), Quaternion.Euler(Vector3.zero))) ;
 		//Camera.main.transform.parent = pObject.transform ;
 		//Camera.main.transform.localPosition = new Vector3(0,20,-100) ;
 		//Spawn () ;
@@ -38,8 +41,10 @@ public class Player : MonoBehaviour
 
 	public void Spawn(Vector3 spawnpos)
 	{
+		if(pObject == null)
+			Start () ;
 
-		if(pObject != null)
+
 			pObject.transform.position = spawnpos ;
 	}
 }
