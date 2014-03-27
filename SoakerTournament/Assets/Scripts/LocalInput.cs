@@ -48,6 +48,6 @@ public class LocalInput : MonoBehaviour
 		//RotateAround(point: Vector3, axis: Vector3, angle: float): void;
 
 
-		//transform.RotateAround( collider.bounds.center,Vector3.up,rotation * Time.deltaTime);
+		transform.RotateAround( collider.bounds.center, Vector3.up, rotation * Time.deltaTime);
 	}
 }
