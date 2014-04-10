@@ -190,7 +190,7 @@ public class Map : MonoBehaviour
 		{
 			string[] strings = str.Split (' ') ;
 			
-			if(strings[0] == "S")
+			if(strings[0] == "I")
 			{
 				mapSizeX = System.Convert.ToInt32(strings[1]) ;
 				mapSizeY = System.Convert.ToInt32(strings[2]) ;
