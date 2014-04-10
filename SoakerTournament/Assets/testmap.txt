@@ -1,7 +1,7 @@
 # Comments
 # Initial Setup
-# S <length> <width> <default tile ID>
-S 16 16 0
+# I <length> <width> <default tile ID>
+I 16 16 0
 # L <AssetPath>
 L Tiles/Tile1
 L Tiles/fountain_mid
@@ -18,3 +18,9 @@ T 1 5 4 3
 T 2 5 3 3
 T 1 4 3 0
 T 3 4 4 0
+# Spawns
+# S <X> <Y> <Affinity>
+S 1 1 0
+S 2 2 0
+S 1 2 0
+S 2 1 0
