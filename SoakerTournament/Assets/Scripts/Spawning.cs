@@ -42,7 +42,7 @@ public class Spawning : MonoBehaviour
 
 		int selected = rng.Next(spawnTotal) ;
 
-		thePlayer.Spawn(spawnPoints[selected].location, spawnPoints[rng.Next(spawnTotal)].rotation ) ;
+		thePlayer.Spawn(spawnPoints[selected].location, spawnPoints[selected].rotation ) ;
 
 		return selected ; 
 	}

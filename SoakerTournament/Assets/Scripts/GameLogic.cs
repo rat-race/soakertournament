@@ -9,6 +9,8 @@ public class GameLogic : MonoBehaviour
 	private Map pMap ;
 	private Spawning spawning ;
 
+	public static int lastSpawn = 0 ;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -27,7 +29,7 @@ public class GameLogic : MonoBehaviour
 
 
 		spawning.Spawn(dPlayer) ;
-		spawning.Spawn(lPlayer) ;
+		lastSpawn = spawning.Spawn(lPlayer) ;
 
 		//dPlayer.Spawn(new Vector3(100,10,100)) ;
 	}
@@ -36,6 +38,6 @@ public class GameLogic : MonoBehaviour
 	void Update () 
 	{
 		if(Input.GetKeyDown(KeyCode.J))
-		   LocalInput.spawnpoint = spawning.Spawn (lPlayer) ;
+			lastSpawn = LocalInput.spawnpoint = spawning.Spawn (lPlayer) ;
 	}
 }
