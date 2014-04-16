@@ -36,6 +36,6 @@ public class GameLogic : MonoBehaviour
 	void Update () 
 	{
 		if(Input.GetKeyDown(KeyCode.J))
-		   spawning.Spawn (lPlayer) ;
+		   LocalInput.spawnpoint = spawning.Spawn (lPlayer) ;
 	}
 }
