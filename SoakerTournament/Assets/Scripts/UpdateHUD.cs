@@ -32,9 +32,9 @@ public class UpdateHUD : MonoBehaviour
 	void OnGUI()
 	{
 		if(DebugGUI)
-			GUI.Box(new Rect(0,0,100,50), "Debug info");
+			GUI.Box(new Rect(0,0,100,50), "Debug info\nLast Spawn: " + GameLogic.lastSpawn);
 
-		GUI.Box(new Rect(0, 200, 100, 100), "Water: " + LocalInput.water + "\nPressure:" + LocalInput.pressure) ;
+		GUI.Box(new Rect(0, 200, 100, 100), "Water: " + LocalInput.water + "\nPressure:" + LocalInput.pressure + "\nSaturation: NOT ADDED") ;
 		//pWater.text = "Water: " + LocalInput.water ;
 		//pPressure.text = "Pressure: " + LocalInput.pressure ;
 		//pSpawnPoint.text = "Spawnpoint: " + LocalInput.spawnpoint ;
