@@ -6,7 +6,9 @@ using System.Text;
 public struct SpawnPoint
 {
 	public Vector3 location ;
+	public Vector3 rotation ;
 	public int affinity ;
+	public int direction ;
 }
 
 public class Spawning : MonoBehaviour 
@@ -36,11 +38,13 @@ public class Spawning : MonoBehaviour
 	{
 		//If there are no spawn points return 1
 		if(spawnTotal <= 0)
-			return 1 ;
+			return -1 ;
 
-		thePlayer.Spawn(spawnPoints[rng.Next(spawnTotal)].location) ;
+		int selected = rng.Next(spawnTotal) ;
 
-		return 0 ; 
+		thePlayer.Spawn(spawnPoints[selected].location, spawnPoints[rng.Next(spawnTotal)].rotation ) ;
+
+		return selected ; 
 	}
 
 	public int Load(string mapName)
@@ -79,8 +83,10 @@ public class Spawning : MonoBehaviour
 				try
 				{
 					//Set the position and the affinity
-					spawnPoints[count].location = new Vector3(System.Convert.ToInt32(strings[1])*TileSize,30, System.Convert.ToInt32(strings[2])*TileSize) ;
-					spawnPoints[count].affinity = System.Convert.ToInt32(strings[3]) ;
+					//Syntax: S <X> <Y> <Rotation> <Affinity>
+					spawnPoints[count].location = new Vector3(System.Convert.ToInt32(strings[1])*TileSize,5, System.Convert.ToInt32(strings[2])*TileSize) ;
+					spawnPoints[count].rotation = new Vector3 (0, System.Convert.ToInt32(strings[3])*45,0) ;
+					spawnPoints[count].affinity = System.Convert.ToInt32(strings[4]) ;
 				}
 				catch(FormatException e)
 				{

@@ -39,11 +39,13 @@ public class Player : MonoBehaviour
 //		pObject.transform.position = new Vector3(10,10,10) ;
 //	}
 
-	public void Spawn(Vector3 spawnpos)
+	public void Spawn(Vector3 spawnpos, Vector3 rotation)
 	{
 		//if(pObject == null)
 //			Start () ;
 		pObject.transform.position = spawnpos ;
+		pObject.transform.rotation = Quaternion.AngleAxis(rotation.y, Vector3.up) ;
+		//pObject.transform.localEulerAngles = rotation ;
 	}
 }
 
