@@ -10,6 +10,7 @@ public class LocalInput : MonoBehaviour
 	private float rotation = 0 ;
 	public static int water = 0 ;
 	public static float pressure = 0;
+	public static int spawnpoint = 0 ;
 	
 	float cSqueeze = 0 ; //Current squeeze
 	float pSqueeze = 0 ; //Past squeeze
