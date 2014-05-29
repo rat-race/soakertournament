@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
 
 	protected GameObject pPrefab ;
 	protected GameObject pObject ;
+<<<<<<< HEAD
+=======
+	protected GameObject pWaterHitBox ;
+>>>>>>> upstream/master
 
 //	Currently will just create a Penny
 //	public Player()

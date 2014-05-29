@@ -16,6 +16,11 @@ public class LocalPlayer : Player
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> upstream/master
 		//lInput = (LocalInput)gameObject.AddComponent("LocalInput"); 
 
 		//lInput = (GameObject)Instantiate
