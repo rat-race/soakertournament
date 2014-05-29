@@ -4,10 +4,148 @@ ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Camera
+    100004: chest
+    100006: f_index_01_L
+    100008: f_index_01_R
+    100010: f_index_02_L
+    100012: f_index_02_R
+    100014: f_index_03_L
+    100016: f_index_03_R
+    100018: f_middle_01_L
+    100020: f_middle_01_R
+    100022: f_middle_02_L
+    100024: f_middle_02_R
+    100026: f_middle_03_L
+    100028: f_middle_03_R
+    100030: f_pinky_01_L
+    100032: f_pinky_01_R
+    100034: f_pinky_02_L
+    100036: f_pinky_02_R
+    100038: f_pinky_03_L
+    100040: f_pinky_03_R
+    100042: f_ring_01_L
+    100044: f_ring_01_R
+    100046: f_ring_02_L
+    100048: f_ring_02_R
+    100050: f_ring_03_L
+    100052: f_ring_03_R
+    100054: foot_L
+    100056: foot_R
+    100058: forearm_L
+    100060: forearm_R
+    100062: hand_L
+    100064: hand_R
+    100066: head
+    100068: heel_02_L
+    100070: heel_02_R
+    100072: heel_L
+    100074: heel_R
+    100076: hips
+    100078: Lamp
+    100080: metarig
+    100082: neck
+    100084: palm_01_L
+    100086: palm_01_R
+    100088: palm_02_L
+    100090: palm_02_R
+    100092: palm_03_L
+    100094: palm_03_R
+    100096: palm_04_L
+    100098: palm_04_R
+    100100: penny
+    100102: shin_L
+    100104: shin_R
+    100106: shoulder_L
+    100108: shoulder_R
+    100110: spine
+    100112: thigh_L
+    100114: thigh_R
+    100116: thumb_01_L
+    100118: thumb_01_R
+    100120: thumb_02_L
+    100122: thumb_02_R
+    100124: thumb_03_L
+    100126: thumb_03_R
+    100128: toe_L
+    100130: toe_R
+    100132: upper_arm_L
+    100134: upper_arm_R
     400000: //RootNode
+    400002: Camera
+    400004: chest
+    400006: f_index_01_L
+    400008: f_index_01_R
+    400010: f_index_02_L
+    400012: f_index_02_R
+    400014: f_index_03_L
+    400016: f_index_03_R
+    400018: f_middle_01_L
+    400020: f_middle_01_R
+    400022: f_middle_02_L
+    400024: f_middle_02_R
+    400026: f_middle_03_L
+    400028: f_middle_03_R
+    400030: f_pinky_01_L
+    400032: f_pinky_01_R
+    400034: f_pinky_02_L
+    400036: f_pinky_02_R
+    400038: f_pinky_03_L
+    400040: f_pinky_03_R
+    400042: f_ring_01_L
+    400044: f_ring_01_R
+    400046: f_ring_02_L
+    400048: f_ring_02_R
+    400050: f_ring_03_L
+    400052: f_ring_03_R
+    400054: foot_L
+    400056: foot_R
+    400058: forearm_L
+    400060: forearm_R
+    400062: hand_L
+    400064: hand_R
+    400066: head
+    400068: heel_02_L
+    400070: heel_02_R
+    400072: heel_L
+    400074: heel_R
+    400076: hips
+    400078: Lamp
+    400080: metarig
+    400082: neck
+    400084: palm_01_L
+    400086: palm_01_R
+    400088: palm_02_L
+    400090: palm_02_R
+    400092: palm_03_L
+    400094: palm_03_R
+    400096: palm_04_L
+    400098: palm_04_R
+    400100: penny
+    400102: shin_L
+    400104: shin_R
+    400106: shoulder_L
+    400108: shoulder_R
+    400110: spine
+    400112: thigh_L
+    400114: thigh_R
+    400116: thumb_01_L
+    400118: thumb_01_R
+    400120: thumb_02_L
+    400122: thumb_02_R
+    400124: thumb_03_L
+    400126: thumb_03_R
+    400128: toe_L
+    400130: toe_R
+    400132: upper_arm_L
+    400134: upper_arm_R
     2300000: //RootNode
+    2300002: penny
     3300000: //RootNode
+    3300002: penny
     4300000: Box01
+    4300002: penny
+    7400000: Default Take
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -17,6 +155,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
+    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
