@@ -11,7 +11,7 @@ public struct SpawnPoint
 	public int direction ;
 }
 
-public class Spawning : MonoBehaviour 
+public class Spawning : MonoBehaviour
 {
 	private SpawnPoint[] spawnPoints ;
 	private int spawnTotal = 0 ;
@@ -19,46 +19,46 @@ public class Spawning : MonoBehaviour
 	static int TileSize = 10 ; //REMEMBER TO FIX THIS
 	
 	// Use this for initialization
-	void Start () 
+	void Start ()
 	{
 		//Load the only current map
-
+		
 	}
-
+	
 	// Update is called once per frame
-	void Update () 
+	void Update ()
 	{
-
+		
 	}
-
+	
 	//Returns:
 	// 1 - No spawn points found!
-
+	
 	public int Spawn(Player thePlayer)
 	{
 		//If there are no spawn points return 1
 		if(spawnTotal <= 0)
 			return -1 ;
-
+		
 		int selected = rng.Next(spawnTotal) ;
-
+		
 		thePlayer.Spawn(spawnPoints[selected].location, spawnPoints[selected].rotation ) ;
-
-		return selected ; 
+		
+		return selected ;
 	}
-
+	
 	public int Load(string mapName)
 	{
-
+		
 		//Set up the RNG seed for this component.
 		rng = new System.Random(DateTime.Now.Millisecond) ;
-
+		
 		TextReader tr = new StreamReader(mapName) ;
 		
 		String str = null ;
-
+		
 		//PASS 1 - Count the spawnpoints, set the array size
-
+		
 		spawnTotal = 0 ;
 		
 		while ((str = tr.ReadLine())!= null)
@@ -68,9 +68,9 @@ public class Spawning : MonoBehaviour
 			if(strings[0] == "S")
 				spawnTotal++ ;
 		}
-
+		
 		spawnPoints = new SpawnPoint[spawnTotal] ;
-
+		
 		tr = new StreamReader(mapName) ;
 		int count = 0 ;
 		
@@ -92,11 +92,11 @@ public class Spawning : MonoBehaviour
 				{
 					break ;
 				}
-
+				
 				count++ ;
 			}
 		}
-
+		
 		return 0 ;
 	}
 }

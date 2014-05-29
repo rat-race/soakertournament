@@ -10,7 +10,7 @@ public struct TileData
 	public byte Orientation ;
 }
 
-public class Map : MonoBehaviour 
+public class Map : MonoBehaviour
 {
 	public int testbedsizeX ;
 	public int testbedsizeZ ;
@@ -28,15 +28,15 @@ public class Map : MonoBehaviour
 	private GameObject fence ;
 	
 	// Asset manager stuff
-
+	
 	private int assetTotal ;
 	private int assetCount ;
 	//private string assetLocations[] ;
 	
 	
 	// Use this for initialization
-	void Start () 
-	{		
+	void Start ()
+	{	
 		mapSizeX = 0 ;
 		mapSizeY = 0 ;
 		defaultTile = 1 ;
@@ -44,9 +44,9 @@ public class Map : MonoBehaviour
 		//Load prefab library
 		//objTiles = new GameObject[4] ;
 		
-//		objTiles[0] = (GameObject)Instantiate(Resources.Load("Tiles/Tile1")) ;
-//		objTiles[1] = (GameObject)Instantiate(Resources.Load("Tiles/Tile1")) ;
-//		objTiles[2] = (GameObject)Instantiate(Resources.Load("Tiles/Tile2")) ;
+		// objTiles[0] = (GameObject)Instantiate(Resources.Load("Tiles/Tile1")) ;
+		// objTiles[1] = (GameObject)Instantiate(Resources.Load("Tiles/Tile1")) ;
+		// objTiles[2] = (GameObject)Instantiate(Resources.Load("Tiles/Tile2")) ;
 		
 		fence = (GameObject)(Resources.Load("Tiles/Fence")) ;
 		
@@ -58,58 +58,58 @@ public class Map : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void Update ()
 	{
-	
+		
 	}
 	
 	int ClearMap()
 	{
 		return 0 ;
 	}
-
+	
 	int GenerateWalls()
 	{
 		//Set start position
-
+		
 		Vector3 dropPos = new Vector3(-TileSize, 0, -TileSize) ;
-
+		
 		//Top wall
-
+		
 		for(int i = 1; i < mapSizeX + 1; i++)
 		{
 			Instantiate(fence, (dropPos + new Vector3(i*TileSize, 0, 0)), Quaternion.Euler(Vector3.zero)) ;
 		}
-
+		
 		dropPos = new Vector3(-TileSize, 0, mapSizeY * TileSize) ;
-
+		
 		//Bottom wall
 		for(int i = 1; i < mapSizeX + 1; i++)
 		{
 			Instantiate(fence, (dropPos + new Vector3(i*TileSize, 0, 0)), Quaternion.Euler(Vector3.zero)) ;
 		}
-
+		
 		dropPos = new Vector3(-TileSize, 0, -TileSize) ;
-
+		
 		//Left wall
-
+		
 		for(int i = 1; i < mapSizeY + 1; i++)
 		{
 			Instantiate(fence, (dropPos + new Vector3(0, 0, i*TileSize)), Quaternion.Euler(Vector3.zero)) ;
 		}
-
+		
 		dropPos = new Vector3(mapSizeX * TileSize, 0, -TileSize) ;
-
+		
 		//Right wall
-
+		
 		for(int i = 1; i < mapSizeY + 1; i++)
 		{
 			Instantiate(fence, (dropPos + new Vector3(0, 0, i*TileSize)), Quaternion.Euler(Vector3.zero)) ;
 		}
-
+		
 		return 0 ; //SUCCESS!
 	}
-		
+	
 	int BlankMap()
 	{	
 		mapSizeX = testbedsizeX ;
@@ -139,42 +139,42 @@ public class Map : MonoBehaviour
 		{
 			Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, tData[i].Orientation*90, 0))) ;
 			
-//			// Ugly switch statement
-//			switch(tData[i].Orientation)
-//			{
-//				case 0:
-//					Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
-//				break ;
-//				case 1:
-//					Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, 90, 0))) ;
-//				break ;
-//				case 2:
-//					Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, 180, 0))) ;
-//				break ;
-//				case 3:
-//					Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, 270, 0))) ;
-//				break ;
-//				default:
-//					Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
-//				break ;
-//			}
+			// // Ugly switch statement
+			// switch(tData[i].Orientation)
+			// {
+			// case 0:
+			// Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
+			// break ;
+			// case 1:
+			// Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, 90, 0))) ;
+			// break ;
+			// case 2:
+			// Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, 180, 0))) ;
+			// break ;
+			// case 3:
+			// Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, 270, 0))) ;
+			// break ;
+			// default:
+			// Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
+			// break ;
+			// }
 			//Instantiate(objTiles[tiles[i]], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
-//			if(tiles[i] == 2)
-//				Instantiate(obj2, new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
-//			else if(tiles[i] == 1)
-//				Instantiate(obj, new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
-//			else Instantiate(obj, new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
-				
+			// if(tiles[i] == 2)
+			// Instantiate(obj2, new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
+			// else if(tiles[i] == 1)
+			// Instantiate(obj, new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
+			// else Instantiate(obj, new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
+			
 		}
 		
-//		for(int i = 0 ; i < mapSizeX ; i++)
-//		{
-//			for(int j = 0 ; j < mapSizeY ; j++)
-//			{
-//				Instantiate(obj, new Vector3(i*TileSize, 0, j*TileSize), Quaternion.Euler(Vector3.zero)) ;
-//			}
-//		}
-
+		// for(int i = 0 ; i < mapSizeX ; i++)
+		// {
+		// for(int j = 0 ; j < mapSizeY ; j++)
+		// {
+		// Instantiate(obj, new Vector3(i*TileSize, 0, j*TileSize), Quaternion.Euler(Vector3.zero)) ;
+		// }
+		// }
+		
 		return 0 ;
 	}
 	
@@ -185,7 +185,7 @@ public class Map : MonoBehaviour
 		TextReader tr = new StreamReader(mapName) ;
 		
 		String str = null ;
-				
+		
 		while ((str = tr.ReadLine())!= null)
 		{
 			string[] strings = str.Split (' ') ;
@@ -211,21 +211,21 @@ public class Map : MonoBehaviour
 			tData[i].TileID = defaultTile ;
 			tData[i].Orientation = 0 ;
 		}
-
+		
 		//Second pass of file - Count the assets
-
+		
 		tr = new StreamReader(mapName) ;
-
+		
 		assetTotal = 0 ;
-
+		
 		while ((str = tr.ReadLine())!= null)
 		{
 			string[] strings = str.Split (' ') ;
-
+			
 			if(strings[0] == "L")
 				assetTotal++ ;
 		}
-
+		
 		objTiles = new GameObject[assetTotal] ;
 		
 		//Third pass of file - Load the assets
@@ -252,7 +252,7 @@ public class Map : MonoBehaviour
 					break ;
 				}
 			}
-		}		
+		}	
 		
 		//Fourth pass of file - Extract the tile IDs
 		
@@ -280,36 +280,36 @@ public class Map : MonoBehaviour
 				}
 			}
 		}
-
+		
 		return 0 ;
 	}
-
+	
 	int ExportMap()
 	{
 		TextWriter tw = File.CreateText("export.txt") ;
-
+		
 		//Export the map size
-
+		
 		tw.WriteLine("# Map Size") ;
-		tw.WriteLine("S " + System.Convert.ToString(mapSizeX) + " " + System.Convert.ToString(mapSizeY) + " " + System.Convert.ToString(defaultTile))  ;
-
+		tw.WriteLine("S " + System.Convert.ToString(mapSizeX) + " " + System.Convert.ToString(mapSizeY) + " " + System.Convert.ToString(defaultTile)) ;
+		
 		//Export the asset locations
-
+		
 		tw.WriteLine("# Assets") ;
-
+		
 		tw.WriteLine(objTiles[0]) ;
-
+		
 		//Export the tile IDs
-
+		
 		tw.WriteLine("# Tiles") ;
-
+		
 		for(int i = 0 ; i < mapArraySize ; i++)
 		{
-
+			
 		}
-
+		
 		tw.Close() ;
-
+		
 		return 0 ;
 	}
 	
