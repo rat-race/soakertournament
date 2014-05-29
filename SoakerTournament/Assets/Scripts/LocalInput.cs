@@ -15,7 +15,7 @@ public class LocalInput : MonoBehaviour
 	public static float pressure = 0;
 	public static int spawnpoint = 0 ;
 	public static int fireDistance = 0 ;
-	
+
 	float cSqueeze = 0 ; //Current squeeze
 	float pSqueeze = 0 ; //Past squeeze
 
@@ -39,13 +39,13 @@ public class LocalInput : MonoBehaviour
 	{
 		velocity = new Vector3(Input.GetAxis("Horizontal") * speed , 0 , Input.GetAxis("Vertical") * speed) ;
 		rotation = Input.GetAxis("Turn") * rotSpeed ;
-		
+
 		pSqueeze = cSqueeze ;
 		cSqueeze = Input.GetAxis("Pressure") ;
-		
+
 		if(cSqueeze > pSqueeze)
 			pressure += 5 * (cSqueeze - pSqueeze) * Time.deltaTime  ;
-		
+
 		if(pressure > 100.0f)
 			pressure = 100.0f ;
 
@@ -79,13 +79,13 @@ public class LocalInput : MonoBehaviour
 
 		}
 
-		
+
 		//pressure += Input.GetAxis("Pressure") ;
 
 		transform.Translate(velocity * Time.deltaTime);
 		//transform.Rotate(0,rotation * Time.deltaTime,0) ;
 		//transform.RotateAround (Vector3.zero, Vector3.up, 20 * Time.deltaTime);
-		
+
 		//RotateAround(point: Vector3, axis: Vector3, angle: float): void;
 
 

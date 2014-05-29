@@ -4,12 +4,12 @@ using System.Collections;
 using System.IO;
 using System.Text;
 
-public class AssetDatabase : MonoBehaviour 
+public class AssetDatabase : MonoBehaviour
 {
-
+	
 	private int assetTotal ;
 	private GameObject[] objTiles ;
-
+	
 	public GameObject GetAsset(int ID)
 	{
 		if(ID < assetTotal)
@@ -18,19 +18,19 @@ public class AssetDatabase : MonoBehaviour
 		}
 		return null ;
 	}
-
+	
 	// Use this for initialization
-	void Start () 
+	void Start ()
 	{
 		
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void Update ()
 	{
 		
 	}
-
+	
 	void Load(string location)
 	{
 		//First pass of file - Find the initialisation
@@ -38,7 +38,7 @@ public class AssetDatabase : MonoBehaviour
 		TextReader tr = new StreamReader(location) ;
 		
 		String str = null ;
-
+		
 		assetTotal = 0 ;
 		
 		while ((str = tr.ReadLine())!= null)
@@ -75,5 +75,5 @@ public class AssetDatabase : MonoBehaviour
 			}
 		}	
 	}
-
+	
 }
