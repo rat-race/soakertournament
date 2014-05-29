@@ -16,6 +16,8 @@ public class LocalPlayer : Player
 
 
 
+
+
 		//lInput = (LocalInput)gameObject.AddComponent("LocalInput"); 
 
 		//lInput = (GameObject)Instantiate
