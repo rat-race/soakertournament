@@ -1,5 +1,8 @@
 using UnityEngine;
+using System;
 using System.Collections;
+using System.IO;
+using System.Text;
 
 public class LocalInput : MonoBehaviour 
 {
@@ -19,10 +22,13 @@ public class LocalInput : MonoBehaviour
 	private Rigidbody waterBall ;
 	public GameObject pPrefab ;
 
+	System.Random rng ; 
+
 	// Use this for initialization
 	public void Start () 
 	{
 		pPrefab = (GameObject)(Resources.Load("Prefabs/Sphere")) ;
+		rng = new System.Random(DateTime.Now.Millisecond) ;
 
 		water = 100 ;
 		//pressure = 0 ;
@@ -59,7 +65,7 @@ public class LocalInput : MonoBehaviour
 		{
 			GameObject clone ;
 			clone = Instantiate(pPrefab, transform.position, transform.rotation) as GameObject ;
-			clone.rigidbody.velocity = transform.TransformDirection (Vector3.forward * 100);
+			clone.rigidbody.velocity = transform.TransformDirection(new Vector3((rng.Next(20)-10), (rng.Next (20)-10), 100)) ; //(Vector3.forward * 100);
 
 
 			//fireDistance = 0 ;
