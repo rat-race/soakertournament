@@ -84,7 +84,7 @@ public class Spawning : MonoBehaviour
 				{
 					//Set the position and the affinity
 					//Syntax: S <X> <Y> <Rotation> <Affinity>
-					spawnPoints[count].location = new Vector3(System.Convert.ToInt32(strings[1])*TileSize,5, System.Convert.ToInt32(strings[2])*TileSize) ;
+					spawnPoints[count].location = new Vector3(System.Convert.ToInt32(strings[1])*TileSize - TileSize/2,5, System.Convert.ToInt32(strings[2])*TileSize - TileSize/2) ;
 					spawnPoints[count].rotation = new Vector3 (0, System.Convert.ToInt32(strings[3])*45,0) ;
 					spawnPoints[count].affinity = System.Convert.ToInt32(strings[4]) ;
 				}

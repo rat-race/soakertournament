@@ -21,6 +21,6 @@ T 3 4 4 0
 # Spawns
 # S <X> <Y> <Rotation> <Affinity>
 S 1 1 1 0
-S 16 16 5 0
-S 1 16 3 0
-S 16 1 7 0
+S 15 15 5 0
+S 1 15 3 0
+S 15 1 7 0
