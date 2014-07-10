@@ -7,7 +7,7 @@ public class NetworkMenuScript : MonoBehaviour {
 	public GUIStyle customButton;
 	
 	public int numberOfPlayers = 7;
-	public string masterServerIPAddress = "72.52.207.14";
+	public string masterServerIPAddress = "66.228.35.77";
 	public int connectionPort = 23466;
 	
 	private const string typeName = "SoakerTournament";
@@ -17,8 +17,8 @@ public class NetworkMenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//MasterServer.ipAddress = masterServerIPAddress;
-		//MasterServer.port = connectionPort;
+		MasterServer.ipAddress = masterServerIPAddress;
+		MasterServer.port = connectionPort;
 	}
 	
 	// Update is called once per frame
@@ -34,7 +34,6 @@ public class NetworkMenuScript : MonoBehaviour {
 			if (GUI.Button (new Rect (20, 20, 180, 50), "Quick Join", customButton)) {
 				Debug.Log ("Quick Join");
 				MasterServer.RequestHostList(typeName);
-				//Application.LoadLevel("Testbed");
 			}
 		}
 		else if (Network.peerType == NetworkPeerType.Client)
@@ -73,10 +72,19 @@ public class NetworkMenuScript : MonoBehaviour {
 			
 			if (Network.peerType == NetworkPeerType.Disconnected && !trying_client)
 			{
-				Debug.Log("Initialising Server");
+				Debug.Log("Initializing Server");
 				Network.InitializeServer(numberOfPlayers, connectionPort, !Network.HavePublicAddress());
 				MasterServer.RegisterHost(typeName, gameName);
 			}
 		}
+	}
+	
+	void OnConnectedToServer()
+	{
+		Application.LoadLevel("Testbed");
+	}
+	void OnServerInitialized()
+	{
+		Application.LoadLevel("Testbed");
 	}
 }
