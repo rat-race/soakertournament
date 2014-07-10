@@ -17,8 +17,8 @@ public class NetworkMenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		MasterServer.ipAddress = masterServerIPAddress;
-		MasterServer.port = connectionPort;
+		//MasterServer.ipAddress = masterServerIPAddress;
+		//MasterServer.port = connectionPort;
 	}
 	
 	// Update is called once per frame
@@ -30,19 +30,22 @@ public class NetworkMenuScript : MonoBehaviour {
 	{
 		if (Network.peerType == NetworkPeerType.Disconnected)
 		{
+			Debug.Log("Disconnected");
 			if (GUI.Button (new Rect (20, 20, 180, 50), "Quick Join", customButton)) {
 				Debug.Log ("Quick Join");
-				MasterServer.RequestHostList();
+				MasterServer.RequestHostList(typeName);
 				//Application.LoadLevel("Testbed");
 			}
 		}
 		else if (Network.peerType == NetworkPeerType.Client)
 		{
+			Debug.Log("Connected as Client");
 			if (GUI.Button (new Rect (20, 20, 180, 50), "Disconnect"))
 				Network.Disconnect(200);		
 		}
 		else if (Network.peerType == NetworkPeerType.Server)
 		{
+			Debug.Log("Connected as Server");
 			if (GUI.Button (new Rect(20,20,180,50), "Stop Hosting"))
 				Network.Disconnect(200);
 		}
@@ -54,6 +57,7 @@ public class NetworkMenuScript : MonoBehaviour {
 		
 		if (msEvent == MasterServerEvent.HostListReceived)
 		{
+			Debug.Log("Master Server List Received");
 			hostList.Clear();
 			hostList.AddRange(MasterServer.PollHostList());
 			
@@ -61,6 +65,7 @@ public class NetworkMenuScript : MonoBehaviour {
 			{
 				if (hd.connectedPlayers < hd.playerLimit)
 				{
+					Debug.Log("Connecting to Server...");
 					Network.Connect(hd);
 					trying_client = true;
 				}			
@@ -68,6 +73,7 @@ public class NetworkMenuScript : MonoBehaviour {
 			
 			if (Network.peerType == NetworkPeerType.Disconnected && !trying_client)
 			{
+				Debug.Log("Initialising Server");
 				Network.InitializeServer(numberOfPlayers, connectionPort, !Network.HavePublicAddress());
 				MasterServer.RegisterHost(typeName, gameName);
 			}
