@@ -4,8 +4,12 @@ using System.Collections;
 public class LocalPlayer : Player
 {
 	public LocalInput lInput ;
-	
-	
+
+	public new void Start()
+	{
+		base.Start() ;
+	}
+
 	public new void Awake()
 	{
 		pPrefab = (GameObject)(Resources.Load("Prefabs/player/Penny")) ;
@@ -13,10 +17,6 @@ public class LocalPlayer : Player
 		pObject.tag = "local" ;
 		Camera.main.transform.parent = pObject.transform ;
 		Camera.main.transform.localPosition = new Vector3(0,20,-100) ;
-		
-		
-		
-		
 		
 		//lInput = (LocalInput)gameObject.AddComponent("LocalInput");
 		

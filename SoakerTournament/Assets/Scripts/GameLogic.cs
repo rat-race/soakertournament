@@ -8,9 +8,7 @@ public class GameLogic : MonoBehaviour
 	private DebugPlayer dPlayer ;
 	private Map pMap ;
 	private Spawning spawning ;
-	
-	public static int lastSpawn = 0 ;
-	
+		
 	// Use this for initialization
 	void Start ()
 	{
@@ -29,15 +27,15 @@ public class GameLogic : MonoBehaviour
 		
 		
 		spawning.Spawn(dPlayer) ;
-		lastSpawn = spawning.Spawn(lPlayer) ;
+		spawning.Spawn(lPlayer) ;
 		
 		//dPlayer.Spawn(new Vector3(100,10,100)) ;
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
 	{
 		if(Input.GetKeyDown(KeyCode.J))
-			lastSpawn = LocalInput.spawnpoint = spawning.Spawn (lPlayer) ;
+			LocalInput.spawnpoint = spawning.Spawn (lPlayer) ;
 	}
 }

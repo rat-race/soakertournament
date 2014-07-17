@@ -11,26 +11,32 @@ public class LocalInput : MonoBehaviour
 	private float rotSpeed = 600 ;
 	private Vector3 velocity ;
 	private float rotation = 0 ;
-	public static float water = 0 ;
-	public static float pressure = 0;
 	public static int spawnpoint = 0 ;
-	public static int fireDistance = 0 ;
+	private Gun gun ;
+	private Player player ;
+	//public static int fireDistance = 0 ;
 
 	float cSqueeze = 0 ; //Current squeeze
 	float pSqueeze = 0 ; //Past squeeze
 
-	private Rigidbody waterBall ;
-	public GameObject pPrefab ;
+	public static float fireDistance = 500.0f ;
 
-	System.Random rng ; 
+
+
+	System.Random rng ;
 
 	// Use this for initialization
 	public void Start () 
 	{
-		pPrefab = (GameObject)(Resources.Load("Prefabs/Sphere")) ;
+
 		rng = new System.Random(DateTime.Now.Millisecond) ;
 
-		water = 100 ;
+		gun = GetComponent<LocalPlayer>().gun ;
+
+
+		//gun = player.gun ;
+		//gun = GetComponent("Player").gun ;
+
 		//pressure = 0 ;
 	}
 
@@ -43,31 +49,21 @@ public class LocalInput : MonoBehaviour
 		pSqueeze = cSqueeze ;
 		cSqueeze = Input.GetAxis("Pressure") ;
 
+
+
 		if(cSqueeze > pSqueeze)
-			pressure += 5 * (cSqueeze - pSqueeze) * Time.deltaTime  ;
+			gun.Pump (cSqueeze - pSqueeze) ;
 
-		if(pressure > 100.0f)
-			pressure = 100.0f ;
-
-		//water++ ;
-
-		//Set the floor/ceiling for water
-
-		if(water > 100.0f)
-			water = 100.0f ;
-
-		if(water < 0.0f)
-			water = 0.0f ;
-
+		//gun = GetComponent<LocalPlayer>().gun ;
 
 
 		if(Input.GetAxis ("Fire") > 0.5f)
 		{
-			GameObject clone ;
-			clone = Instantiate(pPrefab, transform.position, transform.rotation) as GameObject ;
-			clone.rigidbody.velocity = transform.TransformDirection(new Vector3((rng.Next(20)-10), (rng.Next (20)-10), 100)) ; //(Vector3.forward * 100);
 
+			//(Player)GetComponent("Player").gun.Fire();
+			GetComponent<LocalPlayer>().gun.Fire() ;
 
+			/*
 			//fireDistance = 0 ;
 			water -= pressure / 15 ;
 			pressure -= pressure / 7 * Time.deltaTime; 
@@ -75,8 +71,11 @@ public class LocalInput : MonoBehaviour
 				pressure = 0 ;
 			fireDistance = (int)(pressure) ;
 
-
-
+			GameObject clone ;
+			//clone = Instantiate(pPrefab, transform.position, transform.rotation) as GameObject ;
+			clone = Instantiate(pPrefab, transform.TransformPoint(Vector3.forward * fireDistance) + new Vector3(0,3, 0), transform.rotation) as GameObject ; //To do: Move this to the gun
+			clone.rigidbody.velocity = transform.TransformDirection(new Vector3((rng.Next(20)-10), (rng.Next (20)-10), 100)) ; //(Vector3.forward * 100);
+			*/
 		}
 
 
