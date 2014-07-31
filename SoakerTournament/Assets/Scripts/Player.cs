@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
 
 	public void Awake()
 	{
-
 		//Camera.main.transform.parent = pObject.transform ;
 		//Camera.main.transform.localPosition = new Vector3(0,20,-100) ;
 		//Spawn () ;
