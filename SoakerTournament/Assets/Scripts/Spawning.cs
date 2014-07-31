@@ -3,13 +3,14 @@ using System ;
 using System.Collections;
 using System.IO;
 using System.Text;
-public struct SpawnPoint
-{
-	public Vector3 location ;
-	public Vector3 rotation ;
-	public int affinity ;
-	public int direction ;
-}
+
+//public struct SpawnPoint
+//{
+//	public Vector3 location ;
+//	public Vector3 rotation ;
+//	public int affinity ;
+//	public int direction ;
+//}
 
 public class Spawning : MonoBehaviour
 {
