@@ -51,27 +51,40 @@ public class GameLogic : MonoBehaviour
 
 	//Player handling stuff
 
+	private const int MAXPLAYERS = 8 ;
 	private Player[] players ;
 		
 	// Use this for initialization
 	void Start ()
 	{
+		//Set the number of players
+
+		players = new Player[MAXPLAYERS] ;
+
+		for(int i = 0 ; i < MAXPLAYERS; i++)
+		{
+			players[i] = null ;
+		}
+
 		//pMap = gameObject.AddComponent("Map") as Map ;
-		lPlayer = gameObject.AddComponent("LocalPlayer") as LocalPlayer ;
-		dPlayer = gameObject.AddComponent("DebugPlayer") as DebugPlayer ;
+		//lPlayer = gameObject.AddComponent("LocalPlayer") as LocalPlayer ;
+		//dPlayer = gameObject.AddComponent("DebugPlayer") as DebugPlayer ;
 		//spawning = gameObject.AddComponent("Spawning") as Spawning ;
 		
 		//Load the spawn map
 		LoadSpawns("Assets\\testmap.txt");
+
+		AddPlayer(0) ;
+		AddPlayer(1) ;
 		
 		//lPlayer.Start() ;
 		
-		lPlayer.Init () ;
-		dPlayer.Init () ;
+		//lPlayer.Init () ;
+		//dPlayer.Init () ;
 		
 		
-		Spawn(dPlayer) ;
-		Spawn(lPlayer) ;
+		//Spawn(dPlayer) ;
+		//Spawn(lPlayer) ;
 
 		//###Map Start###
 
@@ -98,6 +111,40 @@ public class GameLogic : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.J))
 			LocalInput.spawnpoint = Spawn (lPlayer) ;
+	}
+
+
+	// Inputs:
+	// 0 - Local player
+	// 1 - Debug Player
+	// 
+	//
+	//
+
+	void AddPlayer(int type)
+	{
+		for(int i = 0 ; i < MAXPLAYERS; i++)
+		{
+			if(players[i] == null)
+			{
+				//Create the player
+				if(type == 0)
+				{
+					players[i] = gameObject.AddComponent("LocalPlayer") as LocalPlayer ;
+					players[i].Init () ;
+					Spawn(players[i]) ;
+				}
+				else if(type == 1)
+				{
+					players[i] = gameObject.AddComponent("DebugPlayer") as DebugPlayer ;
+					players[i].Init () ;
+					Spawn(players[i]) ;
+				}
+
+
+				break ;
+			}
+		}
 	}
 
 	//----------------------------------------------------------------------------------
