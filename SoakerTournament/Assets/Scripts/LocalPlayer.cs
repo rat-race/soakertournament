@@ -12,17 +12,17 @@ public class LocalPlayer : Player
 
 	public new void Awake()
 	{
-		pPrefab = (GameObject)(Resources.Load("Prefabs/player/Penny")) ;
-		pObject = (GameObject)(Instantiate (pPrefab, new Vector3(5, 10, 5), Quaternion.Euler(Vector3.zero))) ;
-		pObject.tag = "local" ;
-		Camera.main.transform.parent = pObject.transform ;
+		//pPrefab = (GameObject)(Resources.Load("Prefabs/player/Penny")) ;
+		//pObject = (GameObject)(Instantiate (pPrefab, new Vector3(5, 10, 5), Quaternion.Euler(Vector3.zero))) ;
+		//pObject.tag = "local" ;
+		Camera.main.transform.parent = gameObject.transform ;
 		Camera.main.transform.localPosition = new Vector3(0,20,-100) ;
 		
 		//lInput = (LocalInput)gameObject.AddComponent("LocalInput");
 		
 		//lInput = (GameObject)Instantiate
 		
-		lInput = pObject.AddComponent("LocalInput") as LocalInput ;
+		lInput = gameObject.AddComponent("LocalInput") as LocalInput ;
 		//Instantiate(lInput) ;
 		
 		

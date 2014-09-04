@@ -55,11 +55,11 @@ public class Player : MonoBehaviour
 	{
 		//if(pObject == null)
 		// Start () ;
-		pObject.transform.position = spawnpos ;
+		gameObject.transform.position = spawnpos ;
 		//pObject.transform.rotation = Quaternion.LookRotation(Vector3.forward) ;
-		pObject.transform.rotation = Quaternion.AngleAxis(rotation.y, Vector3.up) ;
+		gameObject.transform.rotation = Quaternion.AngleAxis(rotation.y, Vector3.up) ;
 		//pGun.transform.parent = pPrefab.transform ;
-		pGun.GetComponent<Gun>().SetParent(pPrefab) ;
+		//pGun.GetComponent<Gun>().SetParent(pPrefab) ;
 		//pGun.transform.localPosition = new Vector3(0.0f, 0.0f, 5.0f) ;
 		//gun.SetParent(pObject) ;
 		//pObject.transform.localEulerAngles = rotation ;
