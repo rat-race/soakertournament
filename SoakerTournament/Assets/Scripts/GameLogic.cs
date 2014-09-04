@@ -15,8 +15,8 @@ public struct SpawnPoint
 public class GameLogic : MonoBehaviour
 {
 	
-	private LocalPlayer lPlayer ;
-	private DebugPlayer dPlayer ;
+	//private LocalPlayer lPlayer ;
+	//private DebugPlayer dPlayer ;
 	//private Map pMap ;
 	//private Spawning spawning ;
 
@@ -51,19 +51,25 @@ public class GameLogic : MonoBehaviour
 
 	//Player handling stuff
 
+	private GameObject playerPrefab ;
 	private const int MAXPLAYERS = 8 ;
-	private Player[] players ;
+	//private Player[] players ;
+	private GameObject[] goPlayers ;
 		
 	// Use this for initialization
 	void Start ()
 	{
+
+		playerPrefab = (GameObject)(Resources.Load("Prefabs/player/Penny")) ;
+
 		//Set the number of players
 
-		players = new Player[MAXPLAYERS] ;
+		goPlayers = new GameObject[MAXPLAYERS] ;
 
 		for(int i = 0 ; i < MAXPLAYERS; i++)
 		{
-			players[i] = null ;
+			goPlayers[i] = null ;
+
 		}
 
 		//pMap = gameObject.AddComponent("Map") as Map ;
@@ -109,8 +115,8 @@ public class GameLogic : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if(Input.GetKeyDown(KeyCode.J))
-			LocalInput.spawnpoint = Spawn (lPlayer) ;
+		//if(Input.GetKeyDown(KeyCode.J))
+			//LocalInput.spawnpoint = Spawn (lPlayer) ;
 	}
 
 
@@ -125,24 +131,31 @@ public class GameLogic : MonoBehaviour
 	{
 		for(int i = 0 ; i < MAXPLAYERS; i++)
 		{
-			if(players[i] == null)
+			if(goPlayers[i] == null)
 			{
 				//Create the player
 				if(type == 0)
 				{
-					players[i] = gameObject.AddComponent("LocalPlayer") as LocalPlayer ;
-					players[i].Init () ;
-					Spawn(players[i]) ;
+					goPlayers[i] = (GameObject)(Instantiate (playerPrefab, new Vector3(5, 10, 5), Quaternion.Euler(Vector3.zero))) ;
+					goPlayers[i].AddComponent("LocalPlayer");
+					//players[i] = gameObject.AddComponent("LocalPlayer") as LocalPlayer ;
+					//players[i].Init () ;
+					Spawn(goPlayers[i].GetComponent<Player>()) ;
+					return ;
 				}
 				else if(type == 1)
 				{
-					players[i] = gameObject.AddComponent("DebugPlayer") as DebugPlayer ;
-					players[i].Init () ;
-					Spawn(players[i]) ;
+					goPlayers[i] = (GameObject)(Instantiate (playerPrefab, new Vector3(5, 10, 5), Quaternion.Euler(Vector3.zero))) ;
+					goPlayers[i].AddComponent("DebugPlayer");
+
+					//players[i] = gameObject.AddComponent("DebugPlayer") as DebugPlayer ;
+					//players[i].Init () ;
+					Spawn(goPlayers[i].GetComponent<Player>()) ;
+					return ;
 				}
 
 
-				break ;
+
 			}
 		}
 	}
