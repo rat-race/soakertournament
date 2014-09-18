@@ -29,6 +29,8 @@ public class GameLogic : MonoBehaviour
 
 	//Maps
 
+	public GameObject map ;
+
 	public int testbedsizeX ;
 	public int testbedsizeZ ;
 	private byte[] tiles ;
@@ -37,9 +39,7 @@ public class GameLogic : MonoBehaviour
 	private int mapSizeY ;
 	private byte defaultTile ;
 	private int mapArraySize ;
-	
-	public GameObject obj ;
-	public GameObject obj2 ;
+
 	private GameObject[] objTiles ;	
 	private GameObject fence ;
 	
@@ -52,7 +52,6 @@ public class GameLogic : MonoBehaviour
 
 	private GameObject playerPrefab ;
 	private const int MAXPLAYERS = 8 ;
-	//private Player[] players ;
 	private GameObject[] goPlayers ;
 		
 	// Use this for initialization
@@ -152,7 +151,7 @@ public class GameLogic : MonoBehaviour
 		
 		for(int i = 1; i < mapSizeX + 1; i++)
 		{
-			Instantiate(fence, (dropPos + new Vector3(i*TileSize, 0, 0)), Quaternion.Euler(Vector3.zero)) ;
+			((GameObject)Instantiate(fence, (dropPos + new Vector3(i*TileSize, 0, 0)), Quaternion.Euler(Vector3.zero))).transform.parent = map.transform ;
 		}
 		
 		dropPos = new Vector3(-TileSize, 0, mapSizeY * TileSize) ;
@@ -160,7 +159,7 @@ public class GameLogic : MonoBehaviour
 		//Bottom wall
 		for(int i = 1; i < mapSizeX + 1; i++)
 		{
-			Instantiate(fence, (dropPos + new Vector3(i*TileSize, 0, 0)), Quaternion.Euler(Vector3.zero)) ;
+			((GameObject)Instantiate(fence, (dropPos + new Vector3(i*TileSize, 0, 0)), Quaternion.Euler(Vector3.zero))).transform.parent = map.transform ;
 		}
 		
 		dropPos = new Vector3(-TileSize, 0, -TileSize) ;
@@ -169,7 +168,7 @@ public class GameLogic : MonoBehaviour
 		
 		for(int i = 1; i < mapSizeY + 1; i++)
 		{
-			Instantiate(fence, (dropPos + new Vector3(0, 0, i*TileSize)), Quaternion.Euler(Vector3.zero)) ;
+			((GameObject)Instantiate(fence, (dropPos + new Vector3(0, 0, i*TileSize)), Quaternion.Euler(Vector3.zero))).transform.parent = map.transform ;
 		}
 		
 		dropPos = new Vector3(mapSizeX * TileSize, 0, -TileSize) ;
@@ -178,7 +177,7 @@ public class GameLogic : MonoBehaviour
 		
 		for(int i = 1; i < mapSizeY + 1; i++)
 		{
-			Instantiate(fence, (dropPos + new Vector3(0, 0, i*TileSize)), Quaternion.Euler(Vector3.zero)) ;
+			((GameObject)Instantiate(fence, (dropPos + new Vector3(0, 0, i*TileSize)), Quaternion.Euler(Vector3.zero))).transform.parent = map.transform ;
 		}
 		
 		return 0 ; //SUCCESS!
@@ -208,10 +207,13 @@ public class GameLogic : MonoBehaviour
 	// -1 - No map loaded
 	int GenerateTerrain()
 	{
-		
+		map = new GameObject() ;
+		map.name = "Map" ;
+
 		for(int i = 0 ; i < mapArraySize; i++)
 		{
-			Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, tData[i].Orientation*90, 0))) ;			
+			((GameObject)Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, tData[i].Orientation*90, 0)))).transform.parent = map.transform ;
+
 		}
 		
 		return 0 ;
