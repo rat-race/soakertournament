@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 	public void Start()
 	{
 		pGun = (GameObject)Instantiate((GameObject)(Resources.Load("Prefabs/Guns/TestGun"))) ;
-		//gun = (Gun)pGun.GetComponent("Gun") ;
+		pGun.transform.parent = gameObject.transform ;
 
 		gun = pGun.GetComponent<Gun>() ;
 	}
