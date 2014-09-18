@@ -47,8 +47,7 @@ public class GameLogic : MonoBehaviour
 	
 	private int assetTotal ;
 	private int assetCount ;
-
-
+	
 	//Player handling stuff
 
 	private GameObject playerPrefab ;
@@ -59,7 +58,6 @@ public class GameLogic : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-
 		playerPrefab = (GameObject)(Resources.Load("Prefabs/player/Penny")) ;
 
 		//Set the number of players
@@ -69,28 +67,13 @@ public class GameLogic : MonoBehaviour
 		for(int i = 0 ; i < MAXPLAYERS; i++)
 		{
 			goPlayers[i] = null ;
-
 		}
-
-		//pMap = gameObject.AddComponent("Map") as Map ;
-		//lPlayer = gameObject.AddComponent("LocalPlayer") as LocalPlayer ;
-		//dPlayer = gameObject.AddComponent("DebugPlayer") as DebugPlayer ;
-		//spawning = gameObject.AddComponent("Spawning") as Spawning ;
 		
 		//Load the spawn map
 		LoadSpawns("Assets\\testmap.txt");
 
 		AddPlayer(0) ;
 		AddPlayer(1) ;
-		
-		//lPlayer.Start() ;
-		
-		//lPlayer.Init () ;
-		//dPlayer.Init () ;
-		
-		
-		//Spawn(dPlayer) ;
-		//Spawn(lPlayer) ;
 
 		//###Map Start###
 
@@ -105,7 +88,7 @@ public class GameLogic : MonoBehaviour
 		LoadMap("Assets\\testmap.txt");
 		GenerateTerrain() ;
 		GenerateWalls () ;
-		ExportMap() ;
+		//ExportMap() ;
 		
 		//###Map End###
 
@@ -115,8 +98,7 @@ public class GameLogic : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		//if(Input.GetKeyDown(KeyCode.J))
-			//LocalInput.spawnpoint = Spawn (lPlayer) ;
+
 	}
 
 
@@ -127,7 +109,7 @@ public class GameLogic : MonoBehaviour
 	//
 	//
 
-	void AddPlayer(int type)
+	int AddPlayer(int type)
 	{
 		for(int i = 0 ; i < MAXPLAYERS; i++)
 		{
@@ -138,26 +120,22 @@ public class GameLogic : MonoBehaviour
 				{
 					goPlayers[i] = (GameObject)(Instantiate (playerPrefab, new Vector3(5, 10, 5), Quaternion.Euler(Vector3.zero))) ;
 					goPlayers[i].AddComponent("LocalPlayer");
-					//players[i] = gameObject.AddComponent("LocalPlayer") as LocalPlayer ;
-					//players[i].Init () ;
+
 					Spawn(goPlayers[i].GetComponent<Player>()) ;
-					return ;
+					return 0;
 				}
 				else if(type == 1)
 				{
 					goPlayers[i] = (GameObject)(Instantiate (playerPrefab, new Vector3(5, 10, 5), Quaternion.Euler(Vector3.zero))) ;
 					goPlayers[i].AddComponent("DebugPlayer");
 
-					//players[i] = gameObject.AddComponent("DebugPlayer") as DebugPlayer ;
-					//players[i].Init () ;
 					Spawn(goPlayers[i].GetComponent<Player>()) ;
-					return ;
+					return 0;
 				}
-
-
-
 			}
 		}
+
+		return 1 ;
 	}
 
 	//----------------------------------------------------------------------------------
@@ -233,43 +211,8 @@ public class GameLogic : MonoBehaviour
 		
 		for(int i = 0 ; i < mapArraySize; i++)
 		{
-			Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, tData[i].Orientation*90, 0))) ;
-			
-			// // Ugly switch statement
-			// switch(tData[i].Orientation)
-			// {
-			// case 0:
-			// Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
-			// break ;
-			// case 1:
-			// Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, 90, 0))) ;
-			// break ;
-			// case 2:
-			// Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, 180, 0))) ;
-			// break ;
-			// case 3:
-			// Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, 270, 0))) ;
-			// break ;
-			// default:
-			// Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
-			// break ;
-			// }
-			//Instantiate(objTiles[tiles[i]], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
-			// if(tiles[i] == 2)
-			// Instantiate(obj2, new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
-			// else if(tiles[i] == 1)
-			// Instantiate(obj, new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
-			// else Instantiate(obj, new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(Vector3.zero)) ;
-			
+			Instantiate(objTiles[tData[i].TileID], new Vector3((i%mapSizeX)*TileSize, 0, (int)(i/mapSizeX)*TileSize), Quaternion.Euler(new Vector3(0, tData[i].Orientation*90, 0))) ;			
 		}
-		
-		// for(int i = 0 ; i < mapSizeX ; i++)
-		// {
-		// for(int j = 0 ; j < mapSizeY ; j++)
-		// {
-		// Instantiate(obj, new Vector3(i*TileSize, 0, j*TileSize), Quaternion.Euler(Vector3.zero)) ;
-		// }
-		// }
 		
 		return 0 ;
 	}
