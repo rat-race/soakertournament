@@ -3,20 +3,23 @@ using System.Collections;
 
 public class GameManager
 {
+	public static GameManager instance;
+	private GameManager() {} 
+
 	static int currentScene ; // Tracks the current scene
 	static int currentNetworkState ; // Disconnected/connecting/connected/host/client/disconnected/
 	static string currentMap ;
 
+	public static GameManager Instance
+	{
+		get
+		{
+			if(instance == null)
+			{
+				instance = new GameManager() ;
+			}
+			return instance ;
+		}
+	}
 
-	// Use this for initialization
-	void Start () 
-	{
-	
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-	
-	}
 }
