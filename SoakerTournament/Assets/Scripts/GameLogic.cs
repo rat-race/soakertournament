@@ -69,7 +69,7 @@ public class GameLogic : MonoBehaviour
 		}
 		
 		//Load the spawn map
-		LoadSpawns("Assets\\testmap.txt");
+		MapSetup("Assets\\Maps\\testmap.txt") ;
 
 		AddPlayer(0) ;
 		AddPlayer(1) ;
@@ -82,11 +82,7 @@ public class GameLogic : MonoBehaviour
 		
 		//Load prefab library
 		
-		fence = (GameObject)(Resources.Load("Tiles/Fence")) ;
 
-		LoadMap("Assets\\testmap.txt");
-		GenerateTerrain() ;
-		GenerateWalls () ;
 		//ExportMap() ;
 		
 		//###Map End###
@@ -140,6 +136,18 @@ public class GameLogic : MonoBehaviour
 	//----------------------------------------------------------------------------------
 	// Map
 	//----------------------------------------------------------------------------------
+
+	void MapSetup(string mapName)
+	{
+		LoadSpawns("Assets\\Maps\\testmap.txt");
+		
+		fence = (GameObject)(Resources.Load("Tiles/Fence")) ;
+		
+		LoadMap("Assets\\Maps\\testmap.txt");
+		GenerateTerrain() ;
+		GenerateWalls () ;
+	}
+
 
 	int GenerateWalls()
 	{
