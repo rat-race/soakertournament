@@ -3,12 +3,19 @@ using System.Collections;
 
 public class GameManager
 {
-	public static GameManager instance;
-	private GameManager() {} 
+	private int currentScene ; // Tracks the current scene
+	private int currentNetworkState ; // Disconnected/connecting/connected/host/client/disconnected/
+	private string currentMap ;
 
-	static int currentScene ; // Tracks the current scene
-	static int currentNetworkState ; // Disconnected/connecting/connected/host/client/disconnected/
-	static string currentMap ;
+	//=====================================================
+
+	//Singleton stuff
+
+	private static GameManager instance;
+	private GameManager() 
+	{
+		currentMap = "Assets\\Maps\\testmap.txt" ;
+	}
 
 	public static GameManager Instance
 	{
@@ -22,4 +29,15 @@ public class GameManager
 		}
 	}
 
+	//=====================================================
+
+	public void SetMap(string map)
+	{
+		currentMap = map ;
+	}
+
+	public string GetMap()
+	{
+		return currentMap;
+	}
 }

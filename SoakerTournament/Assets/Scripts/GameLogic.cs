@@ -53,43 +53,33 @@ public class GameLogic : MonoBehaviour
 	private GameObject playerPrefab ;
 	private const int MAXPLAYERS = 8 ;
 	private GameObject[] goPlayers ;
-		
-	// Use this for initialization
-	void Start ()
+
+	void Start()
 	{
 		playerPrefab = (GameObject)(Resources.Load("Prefabs/player/Penny")) ;
-
+		
 		//Set the number of players
-
+		
 		goPlayers = new GameObject[MAXPLAYERS] ;
-
+		
 		for(int i = 0 ; i < MAXPLAYERS; i++)
 		{
 			goPlayers[i] = null ;
 		}
 		
 		//Load the spawn map
-		MapSetup("Assets\\Maps\\testmap.txt") ;
-
+		MapSetup(GameManager.Instance.GetMap()) ;
+		
 		AddPlayer(0) ;
 		AddPlayer(1) ;
-
+		
 		//###Map Start###
-
+		
 		mapSizeX = 0 ;
 		mapSizeY = 0 ;
 		defaultTile = 1 ;
-		
-		//Load prefab library
-		
-
-		//ExportMap() ;
-		
-		//###Map End###
-
-
 	}
-
+		
 	// Update is called once per frame
 	void Update ()
 	{
