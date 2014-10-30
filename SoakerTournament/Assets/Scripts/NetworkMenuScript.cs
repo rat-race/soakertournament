@@ -17,15 +17,33 @@ public class NetworkMenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		MasterServer.ipAddress = masterServerIPAddress;
-		MasterServer.port = connectionPort;
+		//MasterServer.ipAddress = masterServerIPAddress;
+		//MasterServer.port = connectionPort;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+	
+	public void JoinServer()
+	{
+		Debug.Log("Finding Server...");
+		MasterServer.RequestHostList(typeName);
+	}
 
+	public void HostServer()
+	{
+		Debug.Log("Initializing Server...");
+		Network.InitializeServer(numberOfPlayers, connectionPort, !Network.HavePublicAddress());
+		MasterServer.RegisterHost(typeName, gameName);
+	}
+	
+	public void QuitGame()
+	{
+		
+	}
+	/*
 	void OnGUI () 
 	{
 		if (Network.peerType == NetworkPeerType.Disconnected)
@@ -49,7 +67,7 @@ public class NetworkMenuScript : MonoBehaviour {
 				Network.Disconnect(200);
 		}
 	}
-	
+	*/
 	void OnMasterServerEvent(MasterServerEvent msEvent)
 	{
 		bool trying_client = false;
