@@ -9,12 +9,14 @@ public class NetworkManager : MonoBehaviour {
 	public int connectionPort = 25001;
 
 	// Use this for initialization
-	void Awake () {
-		MasterServer.ipAddress = "rogueski.dynamic-dns.net";
-		MasterServer.port = connectionPort = 23466;
+	void Start () {
+		//MasterServer.ipAddress = "rogueski.dynamic-dns.net";
+		//MasterServer.port = 23466;
+		//Debug.Log("Master Server: " + MasterServer.ipAddress + ":" + MasterServer.port);
 	}
 	
 	public void QuickJoin()	{
+		Debug.Log ("Quick Join");
 		MasterServer.RequestHostList(GameManager.GameTypeName);
 	}
 	
@@ -39,13 +41,20 @@ public class NetworkManager : MonoBehaviour {
 					Debug.Log("Connecting to server...");
 					Network.Connect(hd);
 					tryingClient = true;
+					
+					// Add code here to load level that the server is currently running
+					// ????????????????????????????????????????????????????????????????
 				}
 			}
 			
 			if (Network.peerType == NetworkPeerType.Disconnected && !tryingClient)
 			{
+				Debug.Log("Initialising Server...");
 				Network.InitializeServer(GameManager.NumberOfPlayers, connectionPort, !Network.HavePublicAddress());
-				MasterServer.RegisterHost(GameManager.GameTypeName, GameManager.GameName);			
+				MasterServer.RegisterHost(GameManager.GameTypeName, GameManager.GameName);
+				
+						
+				// Add code here to load GameManager.currentScene via Application.LoadLevel		
 			}
 		}
 	}
