@@ -11,7 +11,7 @@ public class NetworkManager : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		MasterServer.ipAddress = "rogueski.dynamic-dns.net";
-		MasterServer.port = 23466;
+		MasterServer.port = connectionPort = 23466;
 	}
 	
 	public void QuickJoin()	{
