@@ -19,6 +19,19 @@ public class NetworkManager : MonoBehaviour {
 		Debug.Log ("Quick Join");
 		MasterServer.RequestHostList(GameManager.GameTypeName);
 	}
+
+    void OnPlayerConnected(NetworkPlayer player)
+    {
+        Debug.Log("Player " + " connected from " + player.ipAddress + ":" + player.port);
+
+        networkView.RPC("LoadServerLevel", player, GameManager.currentScene);
+    }
+
+    [RPC]
+    void LoadServerLevel(int level)
+    {
+        Application.LoadLevel(level);
+    }
 	
 	void OnMasterServerEvent(MasterServerEvent msEvent) {
 		Debug.Log ("Master Server Event");
@@ -41,9 +54,6 @@ public class NetworkManager : MonoBehaviour {
 					Debug.Log("Connecting to server...");
 					Network.Connect(hd);
 					tryingClient = true;
-					
-					// Add code here to load level that the server is currently running
-					// ????????????????????????????????????????????????????????????????
 				}
 			}
 			
@@ -54,7 +64,8 @@ public class NetworkManager : MonoBehaviour {
 				MasterServer.RegisterHost(GameManager.GameTypeName, GameManager.GameName);
 				
 						
-				// Add code here to load GameManager.currentScene via Application.LoadLevel		
+				// Add code here to load GameManager.currentScene via Application.LoadLevel
+                Application.LoadLevel(GameManager.currentScene);
 			}
 		}
 	}
