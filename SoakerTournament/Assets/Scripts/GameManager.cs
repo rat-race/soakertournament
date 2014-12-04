@@ -3,19 +3,16 @@ using System.Collections;
 
 public class GameManager
 {
-	private int currentScene ; // Tracks the current scene
-	private int currentNetworkState ; // Disconnected/connecting/connected/host/client/disconnected/
-	private string currentMap ;
+	public static GameManager instance;
+	private GameManager() {} 
+	
+	public const string GameTypeName = "SoakerTournament";
+	public static string GameName = "Test1";
+	public static int NumberOfPlayers = 7;
+	public static NetworkPeerType currentNetworkState;
 
-	//=====================================================
-
-	//Singleton stuff
-
-	private static GameManager instance;
-	private GameManager() 
-	{
-		currentMap = "Assets\\Maps\\testmap.txt" ;
-	}
+	static int currentScene ; // Tracks the current scene
+	static string currentMap ;
 
 	public static GameManager Instance
 	{
@@ -29,15 +26,4 @@ public class GameManager
 		}
 	}
 
-	//=====================================================
-
-	public void SetMap(string map)
-	{
-		currentMap = map ;
-	}
-
-	public string GetMap()
-	{
-		return currentMap;
-	}
 }

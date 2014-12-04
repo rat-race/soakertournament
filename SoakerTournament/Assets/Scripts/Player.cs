@@ -23,9 +23,7 @@ public class Player : MonoBehaviour
 	public void Start()
 	{
 		pGun = (GameObject)Instantiate((GameObject)(Resources.Load("Prefabs/Guns/TestGun"))) ;
-		//pGun.transform.position = gameObject.transform.position ;
 		pGun.transform.parent = gameObject.transform ;
-		pGun.transform.localPosition = new Vector3(0,0,0) ;
 
 		gun = pGun.GetComponent<Gun>() ;
 	}
@@ -52,13 +50,7 @@ public class Player : MonoBehaviour
 	// {
 	// pObject.transform.position = new Vector3(10,10,10) ;
 	// }
-
-	public void Spawn(Vector3 spawnpos, Quaternion rotation)
-	{
-		gameObject.transform.position = spawnpos ;
-		gameObject.transform.rotation = rotation ;
-	}
-
+	
 	public void Spawn(Vector3 spawnpos, Vector3 rotation)
 	{
 		//if(pObject == null)
